@@ -4,21 +4,21 @@
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-## 📋 Overview
+## Overview
 
-The **Sports Type Classifier** is a machine learning project designed to automatically classify different types of sports from images or videos. This project leverages state-of-the-art deep learning techniques to identify and categorize various sports activities, making it useful for sports analytics, content organization, and automated tagging systems.
+The Sports Type Classifier is a machine learning project designed to automatically classify different types of sports from images or videos. This project leverages state-of-the-art deep learning techniques to identify and categorize various sports activities, making it useful for sports analytics, content organization, and automated tagging systems.
 
-## 🎯 Features
+## Features
 
-- **Multi-class Classification**: Supports classification of multiple sports types
-- **High Accuracy**: Utilizes modern deep learning architectures for robust performance
-- **Flexible Input**: Processes both images and video frames
-- **Extensible Design**: Easy to add new sports categories
-- **Pre-trained Models**: Includes pre-trained models for quick deployment
-- **Real-time Inference**: Optimized for fast prediction times
-- **Data Augmentation**: Built-in augmentation pipeline for improved model generalization
+- Multi-class Classification: Supports classification of multiple sports types
+- High Accuracy: Utilizes modern deep learning architectures for robust performance
+- Flexible Input: Processes both images and video frames
+- Extensible Design: Easy to add new sports categories
+- Pre-trained Models: Includes pre-trained models for quick deployment
+- Real-time Inference: Optimized for fast prediction times
+- Data Augmentation: Built-in augmentation pipeline for improved model generalization
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -65,7 +65,7 @@ print(f"Confidence: {result['confidence']:.2%}")
 results = classifier.predict_batch(['image1.jpg', 'image2.jpg', 'image3.jpg'])
 ```
 
-## 📊 Dataset
+## Dataset
 
 ### Data Requirements
 
@@ -107,7 +107,7 @@ data/
     └── ...
 ```
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 Sports-Type-Classifier/
@@ -142,7 +142,7 @@ Sports-Type-Classifier/
 └── README.md                  # Project documentation
 ```
 
-## 🧠 Model Architecture
+## Model Architecture
 
 The classifier uses a **Convolutional Neural Network (CNN)** architecture based on transfer learning:
 
@@ -180,7 +180,7 @@ history = train_model(
 | Loss Function | Categorical Crossentropy | Loss function for multi-class classification |
 | Image Size | 224x224 | Input image dimensions |
 
-## 📈 Model Performance
+## Model Performance
 
 ### Evaluation Metrics
 
@@ -210,7 +210,7 @@ The model is evaluated using the following metrics:
 python src/evaluate.py --model_path models/sports_classifier.h5 --test_dir data/test
 ```
 
-## 💻 Usage Examples
+## Usage Examples
 
 ### Command Line Interface
 
@@ -248,7 +248,7 @@ for sport, conf in result['top_3']:
     print(f"  - {sport}: {conf:.2%}")
 ```
 
-## 🔧 Configuration
+## Configuration
 
 Configuration settings can be modified in `config/config.yaml`:
 
@@ -273,7 +273,7 @@ data:
   augmentation: true
 ```
 
-## 🧪 Testing
+## Testing
 
 Run the test suite to ensure everything is working correctly:
 
@@ -288,7 +288,7 @@ pytest tests/ --cov=src --cov-report=html
 pytest tests/test_model.py
 ```
 
-## 📚 Documentation
+## Documentation
 
 For detailed documentation, please refer to:
 
@@ -296,7 +296,7 @@ For detailed documentation, please refer to:
 - **Jupyter Notebooks**: Step-by-step tutorials in `notebooks/`
 - **Model Cards**: Detailed model information in `models/README.md`
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please follow these guidelines:
 
@@ -323,49 +323,47 @@ To add a new sport category:
 3. Update `num_classes` in configuration
 4. Retrain the model
 
-## 🐛 Known Issues
+## Known Issues
 
 - Large batch sizes may cause memory issues on GPUs with limited VRAM
 - Video processing requires additional dependencies (OpenCV)
 - Some sports with similar visual features may be confused (e.g., field hockey vs. ice hockey)
 
-## 🗺️ Roadmap
+## Roadmap
 
-- [ ] Add support for video classification
-- [ ] Implement real-time webcam classification
-- [ ] Add more sports categories
-- [ ] Optimize model for edge devices (TensorFlow Lite)
-- [ ] Create REST API for model serving
-- [ ] Develop web interface for easy interaction
-- [ ] Add multi-label classification (multiple sports in one image)
+- Add support for video classification
+- Implement real-time webcam classification
+- Add more sports categories
+- Optimize model for edge devices (TensorFlow Lite)
+- Create REST API for model serving
+- Develop web interface for easy interaction
+- Add multi-label classification (multiple sports in one image)
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👥 Authors
+## Authors
 
-- **NusratBegum** - *Initial work* - [GitHub](https://github.com/NusratBegum)
+- NusratBegum - Initial work - [GitHub](https://github.com/NusratBegum)
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Thanks to the open-source community for providing excellent tools and libraries
 - Dataset sources and contributors
 - Research papers that inspired this work
 - Pre-trained model providers (ImageNet, etc.)
 
-## 📞 Contact
+## Contact
 
-For questions, suggestions, or issues, please:
-- Open an issue on [GitHub Issues](https://github.com/NusratBegum/Sports-Type-Classifier/issues)
-- Contact: [Create an issue for support]
+For questions, suggestions, or issues, please open an issue on [GitHub Issues](https://github.com/NusratBegum/Sports-Type-Classifier/issues).
 
-## 📖 References
+## References
 
-1. Deep Learning for Image Classification - [Link]
-2. Transfer Learning in Computer Vision - [Link]
-3. Sports Recognition Papers and Research - [Link]
+1. Deep Learning for Image Classification
+2. Transfer Learning in Computer Vision
+3. Sports Recognition Papers and Research
 
----
+## Note
 
-**Note**: This project is under active development. Features and documentation may change as the project evolves.
+This project is under active development. Features and documentation may change as the project evolves.

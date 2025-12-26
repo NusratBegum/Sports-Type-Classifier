@@ -3,15 +3,16 @@
 ## Table of Contents
 
 1. [Architecture Overview](#architecture-overview)
-2. [Module Documentation](#module-documentation)
-3. [Data Pipeline](#data-pipeline)
-4. [Model Architecture](#model-architecture)
-5. [Training Pipeline](#training-pipeline)
-6. [Evaluation Metrics](#evaluation-metrics)
-7. [API Reference](#api-reference)
-8. [Configuration Guide](#configuration-guide)
-9. [Deployment Guide](#deployment-guide)
-10. [Troubleshooting](#troubleshooting)
+2. [Jupyter Notebook](#jupyter-notebook)
+3. [Module Documentation](#module-documentation)
+4. [Data Pipeline](#data-pipeline)
+5. [Model Architecture](#model-architecture)
+6. [Training Pipeline](#training-pipeline)
+7. [Evaluation Metrics](#evaluation-metrics)
+8. [API Reference](#api-reference)
+9. [Configuration Guide](#configuration-guide)
+10. [Deployment Guide](#deployment-guide)
+11. [Troubleshooting](#troubleshooting)
 
 ---
 
@@ -29,6 +30,9 @@ Sports-Type-Classifier/
 │   ├── evaluate.py        # Evaluation utilities
 │   ├── predict.py         # Inference utilities
 │   └── utils.py           # Common utilities
+├── notebooks/              # Jupyter notebooks
+│   ├── main.ipynb         # Complete project walkthrough
+│   └── README.md          # Notebooks documentation
 ├── config/                 # Configuration files
 │   └── config.yaml        # Main configuration
 ├── examples/              # Example scripts
@@ -43,6 +47,93 @@ Sports-Type-Classifier/
 2. **Extensibility**: Easy to add new features or modify existing ones
 3. **Reproducibility**: Configuration-driven with seed management
 4. **Professional Standards**: Comprehensive documentation and type hints
+
+---
+
+## Jupyter Notebook
+
+### Main Notebook (notebooks/main.ipynb)
+
+The project includes a comprehensive Jupyter notebook that provides a complete walkthrough of the Sports Type Classifier project. This notebook serves as both educational material and a practical guide for data scientists and analysts.
+
+#### Notebook Contents
+
+The notebook is structured into 10 main sections:
+
+1. **Introduction & Problem Statement**
+   - Business context for sports classification
+   - Dataset overview: Football (799 images), Tennis (718 images), Weight Lifting (577 images)
+   - Success metrics and project objectives
+
+2. **Import Libraries**
+   - All required dependencies
+   - Environment setup and configuration
+
+3. **Data Loading**
+   - Loading the sports images dataset
+   - Understanding data structure and organization
+
+4. **Feature Types Analysis**
+   - Analyzing image characteristics
+   - Identifying relevant features for classification
+
+5. **Exploratory Data Analysis (EDA)**
+   - Class distribution visualization
+   - Image statistics (dimensions, aspect ratios, color distributions)
+   - Sample images from each sport category
+   - Statistical analysis of the dataset
+
+6. **Hypothesis Formulation & Testing**
+   - Statistical hypothesis testing
+   - Data assumptions validation
+
+7. **Feature Engineering**
+   - Image preprocessing pipeline
+   - Data augmentation strategies
+   - Normalization techniques
+
+8. **Model Development**
+   - CNN architecture design
+   - Transfer learning implementation
+   - Model training with various configurations
+
+9. **Model Evaluation**
+   - Accuracy, precision, recall, F1-score
+   - Confusion matrix analysis
+   - Per-class performance evaluation
+   - Visualization of results
+
+10. **Conclusions & Recommendations**
+    - Summary of findings
+    - Model performance insights
+    - Recommendations for future improvements
+
+#### Running the Notebook
+
+To use the notebook:
+
+```bash
+# Install Jupyter if not already installed
+pip install jupyter
+
+# Launch Jupyter Notebook
+jupyter notebook notebooks/main.ipynb
+
+# Or use JupyterLab
+pip install jupyterlab
+jupyter lab notebooks/main.ipynb
+```
+
+#### Integration with Source Code
+
+The notebook demonstrates exploratory work that complements the production code in `src/`:
+
+- **Exploration**: The notebook shows data exploration and experimentation
+- **Production**: The `src/` modules provide production-ready implementations
+- **Learning**: Use the notebook to understand concepts and methodologies
+- **Deployment**: Use the `src/` modules for actual deployment
+
+For detailed information about using the notebooks, see [notebooks/README.md](notebooks/README.md).
 
 ---
 

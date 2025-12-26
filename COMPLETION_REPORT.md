@@ -63,27 +63,60 @@ The Sports Type Classifier project has been successfully transformed into a prof
 
 ---
 
-### 2. Documentation
+### 2. Jupyter Notebook (notebooks/)
 
-1. **README.md** (368 lines)
+**Complete Project Walkthrough:**
+
+1. **main.ipynb** (2677 lines / 43 cells)
+   - Introduction and problem statement with business context
+   - Library imports and environment setup
+   - Data loading and understanding
+   - Feature types analysis
+   - Comprehensive exploratory data analysis (EDA)
+   - Hypothesis formulation and statistical testing
+   - Feature engineering and preprocessing
+   - Model development using CNN and transfer learning
+   - Model evaluation with multiple metrics
+   - Conclusions and recommendations
+   - Professional markdown documentation throughout
+   - Code cells with inline comments
+   - Visualizations for data and results
+
+2. **README.md** (170 lines)
+   - Comprehensive notebooks documentation
+   - Running instructions for Jupyter/JupyterLab/VS Code
+   - Notebook structure explanation
+   - Usage tips and best practices
+   - Integration with source code
+   - Troubleshooting guide
+   - Export options (Python, HTML, PDF)
+
+**Total Notebook Content:** 2,847 lines
+
+---
+
+### 3. Documentation
+
+1. **README.md** (390+ lines)
    - Professional format, no emojis
    - Comprehensive project overview
    - Installation instructions
-   - Usage examples
+   - Usage examples including Jupyter notebook
    - Configuration guide
    - Contributing guidelines
 
-2. **DOCUMENTATION.md** (544 lines)
+2. **DOCUMENTATION.md** (650+ lines)
    - Technical architecture documentation
+   - Jupyter notebook section with detailed overview
    - Module documentation
    - API reference
    - Configuration guide
    - Deployment guide
    - Troubleshooting section
 
-3. **PROJECT_SUMMARY.md** (374 lines)
+3. **PROJECT_SUMMARY.md** (400+ lines)
    - Complete enhancement summary
-   - Code metrics and statistics
+   - Code metrics and statistics including notebook
    - Standards compliance information
    - Usage examples
 
@@ -92,11 +125,11 @@ The Sports Type Classifier project has been successfully transformed into a prof
    - Prerequisites and setup
    - Usage instructions for each example
 
-**Total Documentation:** 1,431 lines
+**Total Documentation:** 1,600+ lines
 
 ---
 
-### 3. Example Scripts (examples/)
+### 4. Example Scripts (examples/)
 
 1. **basic_usage.py**
    - Single image prediction demonstration
@@ -126,7 +159,7 @@ All examples include:
 
 ---
 
-### 4. Configuration
+### 5. Configuration
 
 **config/config.yaml** (400 lines)
 - Fully documented configuration file
@@ -140,7 +173,7 @@ All examples include:
 
 ---
 
-### 5. Package Setup
+### 6. Package Setup
 
 1. **setup.py** (122 lines)
    - Complete package metadata
@@ -221,14 +254,17 @@ All examples include:
 ### Code Metrics
 - **Total Lines of Code:** 2,891 lines (core modules)
 - **Total Lines (including examples):** ~3,600 lines
-- **Documentation Lines:** 1,431 lines
+- **Jupyter Notebook:** 2,677 lines (43 cells)
+- **Total Lines (with notebook):** ~6,400+ lines
+- **Documentation Lines:** 1,600+ lines
 - **Modules:** 7 core + 4 examples
 - **Functions:** 60+ documented functions
 - **Classes:** 5 main classes
 
 ### File Count
 - **Python Files:** 11 (7 core + 4 examples)
-- **Documentation Files:** 4 (README, DOCUMENTATION, SUMMARY, examples/README)
+- **Jupyter Notebooks:** 1 (main.ipynb)
+- **Documentation Files:** 5 (README, DOCUMENTATION, SUMMARY, examples/README, notebooks/README)
 - **Configuration Files:** 1 (config.yaml)
 - **Setup Files:** 2 (setup.py, requirements.txt)
 
@@ -324,17 +360,29 @@ While the structure is complete and professional, to make it fully functional:
    pip install tensorflow>=2.10.0
    ```
 
-2. **Implement Model Building:**
+2. **Explore the Jupyter Notebook:**
+   ```bash
+   # Install Jupyter
+   pip install jupyter
+   
+   # Run the complete walkthrough
+   jupyter notebook notebooks/main.ipynb
+   ```
+   - The notebook demonstrates the complete data science workflow
+   - Includes data exploration, model development, and evaluation
+   - Provides context for the production code structure
+
+3. **Implement Model Building:**
    - The structure provides clear placeholders
    - All interfaces are defined
    - Documentation shows expected implementation
 
-3. **Add Training Data:**
+4. **Add Training Data:**
    - Organize data in specified structure
    - Run data preprocessing
    - Train models using provided pipeline
 
-4. **Run Tests:**
+5. **Run Tests:**
    - Structure is ready for pytest
    - Test examples provided in docstrings
    - Can add unit tests easily

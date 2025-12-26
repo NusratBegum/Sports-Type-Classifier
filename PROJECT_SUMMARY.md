@@ -162,6 +162,9 @@ Sports-Type-Classifier/
 │   ├── evaluate.py              # Evaluation utilities (345 lines)
 │   ├── predict.py               # Inference utilities (426 lines)
 │   └── utils.py                 # Common utilities (542 lines)
+├── notebooks/                    # Jupyter notebooks
+│   ├── main.ipynb               # Complete project walkthrough (2677 lines)
+│   └── README.md                # Notebooks documentation (170 lines)
 ├── config/
 │   └── config.yaml              # Comprehensive configuration (400 lines)
 ├── examples/                     # Usage examples
@@ -170,7 +173,7 @@ Sports-Type-Classifier/
 │   ├── batch_prediction.py      # Batch processing demo
 │   ├── train_model.py           # Training demo
 │   └── evaluate_model.py        # Evaluation demo
-├── DOCUMENTATION.md             # Technical documentation (571 lines)
+├── DOCUMENTATION.md             # Technical documentation (650+ lines)
 ├── README.md                    # Project README (no emojis)
 ├── CONTRIBUTING.md              # Contribution guidelines
 ├── LICENSE                      # MIT License
@@ -179,6 +182,7 @@ Sports-Type-Classifier/
 └── .gitignore                   # Git ignore rules (updated)
 
 Total Lines of Professional Code: ~3,600+ lines
+Total Lines including Notebook: ~6,400+ lines
 ```
 
 ---

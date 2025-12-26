@@ -50,6 +50,8 @@ pip install -r requirements.txt
 
 ### Quick Start
 
+#### Using the Python API
+
 ```python
 from sports_classifier import SportsClassifier
 
@@ -64,6 +66,28 @@ print(f"Confidence: {result['confidence']:.2%}")
 # Classify multiple images
 results = classifier.predict_batch(['image1.jpg', 'image2.jpg', 'image3.jpg'])
 ```
+
+#### Using the Jupyter Notebook
+
+For a complete walkthrough of the project, including data exploration, model training, and evaluation:
+
+```bash
+# Install Jupyter if not already installed
+pip install jupyter
+
+# Launch Jupyter and open the main notebook
+jupyter notebook notebooks/main.ipynb
+```
+
+The notebook covers:
+- Data loading and exploration
+- Feature analysis and EDA
+- Model development and training
+- Evaluation and performance metrics
+- Conclusions and recommendations
+
+See [notebooks/README.md](notebooks/README.md) for detailed notebook documentation.
+
 
 ## Dataset
 
@@ -119,9 +143,8 @@ Sports-Type-Classifier/
 │   ├── sports_classifier.h5   # Trained model weights
 │   └── model_config.json      # Model configuration
 ├── notebooks/                 # Jupyter notebooks for exploration
-│   ├── exploratory_analysis.ipynb
-│   ├── model_training.ipynb
-│   └── evaluation.ipynb
+│   ├── main.ipynb             # Complete project walkthrough
+│   └── README.md              # Notebooks documentation
 ├── src/                       # Source code
 │   ├── __init__.py
 │   ├── data_preprocessing.py  # Data loading and preprocessing
@@ -292,9 +315,11 @@ pytest tests/test_model.py
 
 For detailed documentation, please refer to:
 
-- **API Documentation**: Auto-generated API docs in `docs/api/`
-- **Jupyter Notebooks**: Step-by-step tutorials in `notebooks/`
-- **Model Cards**: Detailed model information in `models/README.md`
+- **Technical Documentation**: Comprehensive guide in [DOCUMENTATION.md](DOCUMENTATION.md)
+- **Jupyter Notebook**: Complete project walkthrough in [notebooks/main.ipynb](notebooks/main.ipynb)
+- **Notebooks Guide**: Detailed notebook documentation in [notebooks/README.md](notebooks/README.md)
+- **API Documentation**: Function and class references with examples
+- **Contributing Guide**: Guidelines for contributors in [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## Contributing
 

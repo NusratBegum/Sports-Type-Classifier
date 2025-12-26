@@ -1,0 +1,399 @@
+# Sports Type Classifier Configuration File
+# 
+# This YAML file contains all configuration parameters for training,
+# evaluation, and inference of the Sports Type Classifier model.
+#
+# Configuration Structure:
+# - model: Model architecture and hyperparameters
+# - training: Training process parameters
+# - data: Dataset paths and preprocessing settings
+# - evaluation: Evaluation and metrics configuration
+# - inference: Inference and deployment settings
+#
+# Author: NusratBegum
+# Date: 2025
+
+# ==============================================================================
+# MODEL CONFIGURATION
+# ==============================================================================
+model:
+  # Backbone architecture for transfer learning
+  # Options: 'resnet50', 'resnet101', 'efficientnet_b0', 'efficientnet_b7', 
+  #          'mobilenet_v2', 'inception_v3', 'vgg16'
+  architecture: 'resnet50'
+  
+  # Input image dimensions (height, width, channels)
+  # Standard size for most CNN architectures is 224x224
+  # EfficientNet B7 uses 600x600 for higher accuracy
+  input_shape: [224, 224, 3]
+  
+  # Number of sport categories to classify
+  # Should match the number of subdirectories in your training data
+  num_classes: 20
+  
+  # Dropout rate for regularization (0.0 to 1.0)
+  # Higher values prevent overfitting but may reduce capacity
+  # Typical range: 0.3 to 0.5
+  dropout_rate: 0.5
+  
+  # Whether to use pre-trained ImageNet weights for backbone
+  # true: Transfer learning (recommended, faster convergence)
+  # false: Train from scratch (requires more data and time)
+  pretrained_weights: true
+  
+  # Number of layers to freeze in the backbone during initial training
+  # 0: Train all layers (full fine-tuning)
+  # -1: Freeze all backbone layers (only train top layers)
+  # N: Freeze first N layers
+  freeze_backbone_layers: -1
+  
+  # Dense layer configuration before output
+  # List of hidden layer sizes for the classification head
+  dense_layers: [512, 256]
+  
+  # Activation function for dense layers
+  # Options: 'relu', 'elu', 'leaky_relu', 'swish'
+  activation: 'relu'
+  
+  # Batch normalization after dense layers
+  use_batch_normalization: true
+
+# ==============================================================================
+# TRAINING CONFIGURATION
+# ==============================================================================
+training:
+  # Number of training samples to process before updating weights
+  # Larger batches: Faster training, more memory usage, less noise in gradient
+  # Smaller batches: Slower training, less memory, more generalization
+  # Typical values: 16, 32, 64, 128
+  batch_size: 32
+  
+  # Maximum number of complete passes through the training dataset
+  # Will stop early if early_stopping is triggered
+  epochs: 50
+  
+  # Initial learning rate for the optimizer
+  # Typical range: 0.0001 to 0.01
+  # Start higher (0.001) for training top layers only
+  # Use lower (0.0001) for fine-tuning entire network
+  learning_rate: 0.001
+  
+  # Optimizer algorithm
+  # Options: 'adam', 'sgd', 'rmsprop', 'adamw'
+  # Adam is a good default choice
+  optimizer: 'adam'
+  
+  # Loss function for training
+  # For multi-class classification: 'categorical_crossentropy'
+  # For binary classification: 'binary_crossentropy'
+  loss_function: 'categorical_crossentropy'
+  
+  # Metrics to track during training
+  # Common options: 'accuracy', 'precision', 'recall', 'auc'
+  metrics:
+    - 'accuracy'
+    - 'top_3_accuracy'
+  
+  # Validation split ratio (0.0 to 1.0)
+  # Fraction of training data to use for validation
+  # 0.2 means 20% for validation, 80% for training
+  validation_split: 0.2
+  
+  # Learning rate schedule configuration
+  learning_rate_schedule:
+    # Enable learning rate reduction on plateau
+    enabled: true
+    
+    # Factor by which to reduce learning rate
+    # new_lr = lr * factor
+    factor: 0.5
+    
+    # Number of epochs with no improvement after which to reduce LR
+    patience: 5
+    
+    # Minimum learning rate threshold
+    min_lr: 0.00001
+  
+  # Early stopping configuration
+  early_stopping:
+    # Enable early stopping to prevent overfitting
+    enabled: true
+    
+    # Metric to monitor for early stopping
+    # Options: 'val_loss', 'val_accuracy', 'val_f1_score'
+    monitor: 'val_loss'
+    
+    # Number of epochs with no improvement after which to stop
+    patience: 10
+    
+    # Whether lower values are better (true for loss, false for accuracy)
+    mode: 'min'
+    
+    # Restore best weights when stopping early
+    restore_best_weights: true
+  
+  # Model checkpoint configuration
+  checkpoint:
+    # Enable saving model checkpoints during training
+    enabled: true
+    
+    # Directory to save checkpoints
+    save_dir: 'checkpoints'
+    
+    # Save only the best model based on validation metric
+    save_best_only: true
+    
+    # Metric to monitor for saving best model
+    monitor: 'val_accuracy'
+    
+    # Save frequency (epochs)
+    save_freq: 1
+  
+  # Mixed precision training for faster computation on modern GPUs
+  # Requires TensorFlow 2.4+ and compatible GPU
+  use_mixed_precision: false
+  
+  # Random seed for reproducibility
+  # Set to a fixed number for reproducible results
+  # Set to null for random initialization
+  random_seed: 42
+
+# ==============================================================================
+# DATA CONFIGURATION
+# ==============================================================================
+data:
+  # Paths to dataset directories
+  paths:
+    # Directory containing training images (organized by class subdirectories)
+    train_dir: 'data/train'
+    
+    # Directory containing validation images
+    validation_dir: 'data/validation'
+    
+    # Directory containing test images
+    test_dir: 'data/test'
+    
+    # Path to class names file (one class name per line)
+    # Leave null to automatically detect from subdirectory names
+    class_names_file: null
+  
+  # Data preprocessing settings
+  preprocessing:
+    # Image resizing method
+    # Options: 'resize', 'crop', 'pad'
+    resize_method: 'resize'
+    
+    # Normalization method
+    # 'standard': (x - mean) / std using ImageNet statistics
+    # 'minmax': Scale to [0, 1]
+    # 'none': No normalization
+    normalization: 'standard'
+    
+    # ImageNet mean values for each RGB channel
+    mean: [0.485, 0.456, 0.406]
+    
+    # ImageNet standard deviation values for each RGB channel
+    std: [0.229, 0.224, 0.225]
+    
+    # Convert grayscale images to RGB by duplicating channels
+    grayscale_to_rgb: true
+  
+  # Data augmentation settings (applied during training only)
+  augmentation:
+    # Enable data augmentation
+    enabled: true
+    
+    # Random horizontal flip
+    horizontal_flip: true
+    
+    # Random vertical flip (not recommended for sports images)
+    vertical_flip: false
+    
+    # Random rotation range in degrees
+    # Value of 15 means rotate between -15 and +15 degrees
+    rotation_range: 15
+    
+    # Random zoom range (0.0 to 1.0)
+    # Value of 0.1 means zoom between 90% and 110%
+    zoom_range: 0.1
+    
+    # Random width shift as fraction of total width
+    width_shift_range: 0.1
+    
+    # Random height shift as fraction of total height
+    height_shift_range: 0.1
+    
+    # Random brightness adjustment range
+    # Values are multipliers, e.g., [0.8, 1.2] for ±20% brightness
+    brightness_range: [0.9, 1.1]
+    
+    # Random contrast adjustment range
+    contrast_range: [0.9, 1.1]
+    
+    # Mode for filling in newly created pixels
+    # Options: 'nearest', 'constant', 'reflect', 'wrap'
+    fill_mode: 'nearest'
+  
+  # Data loading settings
+  loading:
+    # Number of worker threads for data loading
+    # 0: Use main thread
+    # >0: Use multiprocessing for faster loading
+    # Recommended: number of CPU cores
+    num_workers: 4
+    
+    # Use multiprocessing for data loading
+    use_multiprocessing: true
+    
+    # Maximum queue size for data generator
+    max_queue_size: 10
+
+# ==============================================================================
+# EVALUATION CONFIGURATION
+# ==============================================================================
+evaluation:
+  # Metrics to compute during evaluation
+  metrics:
+    - 'accuracy'
+    - 'precision'
+    - 'recall'
+    - 'f1_score'
+    - 'confusion_matrix'
+    - 'top_3_accuracy'
+    - 'top_5_accuracy'
+  
+  # Generate and save visualizations
+  visualizations:
+    # Save confusion matrix heatmap
+    confusion_matrix: true
+    
+    # Save per-class accuracy bar chart
+    per_class_accuracy: true
+    
+    # Save ROC curves (for each class)
+    roc_curves: true
+    
+    # Save precision-recall curves
+    precision_recall_curves: true
+    
+    # Directory to save visualization plots
+    output_dir: 'results/visualizations'
+  
+  # Classification report settings
+  report:
+    # Generate detailed classification report
+    enabled: true
+    
+    # Include support (number of samples) for each class
+    include_support: true
+    
+    # Output format: 'text', 'json', 'csv'
+    format: 'text'
+    
+    # Path to save classification report
+    output_path: 'results/classification_report.txt'
+
+# ==============================================================================
+# INFERENCE CONFIGURATION
+# ==============================================================================
+inference:
+  # Batch size for inference
+  # Can be larger than training batch size since no gradients are computed
+  batch_size: 64
+  
+  # Number of top predictions to return
+  top_k: 3
+  
+  # Confidence threshold for predictions (0.0 to 1.0)
+  # Predictions below this threshold may be flagged as uncertain
+  confidence_threshold: 0.7
+  
+  # Test-time augmentation (TTA)
+  # Apply multiple augmentations and average predictions for more robust results
+  test_time_augmentation:
+    enabled: false
+    num_augmentations: 5
+  
+  # Model format for deployment
+  # Options: 'h5', 'savedmodel', 'tflite'
+  export_format: 'savedmodel'
+  
+  # TensorFlow Lite optimization (for edge deployment)
+  tflite_optimization:
+    # Enable quantization for smaller model size
+    enabled: false
+    
+    # Quantization type: 'float16', 'int8', 'dynamic'
+    quantization_type: 'float16'
+
+# ==============================================================================
+# LOGGING AND OUTPUT CONFIGURATION
+# ==============================================================================
+logging:
+  # Logging level
+  # Options: 'DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'
+  level: 'INFO'
+  
+  # Log file path
+  log_file: 'logs/training.log'
+  
+  # TensorBoard logging
+  tensorboard:
+    enabled: true
+    log_dir: 'logs/tensorboard'
+    update_freq: 'epoch'  # 'epoch' or 'batch'
+  
+  # Weights & Biases (wandb) logging
+  wandb:
+    enabled: false
+    project_name: 'sports-type-classifier'
+    entity: null  # Your W&B username or team name
+
+# ==============================================================================
+# HARDWARE CONFIGURATION
+# ==============================================================================
+hardware:
+  # GPU device ID to use (-1 for CPU, 0 for first GPU, etc.)
+  gpu_id: 0
+  
+  # Allow GPU memory growth (prevents TensorFlow from allocating all GPU memory)
+  gpu_memory_growth: true
+  
+  # Limit GPU memory usage (in MB)
+  # null: Use all available memory
+  gpu_memory_limit: null
+  
+  # Use multiple GPUs if available
+  use_multi_gpu: false
+  
+  # Mixed precision training (requires compatible GPU)
+  use_mixed_precision: false
+
+# ==============================================================================
+# DEPLOYMENT CONFIGURATION
+# ==============================================================================
+deployment:
+  # Model serving configuration
+  serving:
+    # REST API host
+    host: '0.0.0.0'
+    
+    # REST API port
+    port: 8000
+    
+    # Maximum number of concurrent requests
+    max_concurrent_requests: 4
+    
+    # Request timeout in seconds
+    timeout: 30
+  
+  # Model versioning
+  versioning:
+    # Model version string
+    version: '1.0.0'
+    
+    # Model metadata
+    metadata:
+      author: 'NusratBegum'
+      description: 'Sports Type Classifier using Deep Learning'
+      training_date: '2025-01-01'

@@ -122,7 +122,8 @@ class SportsPredictor:
         if 'class_names' in self.config:
             return self.config['class_names']
         
-        # Use default sports categories
+        # Get default class names from module constants
+        # from .model import DEFAULT_SPORTS_CATEGORIES
         from src.model import DEFAULT_SPORTS_CATEGORIES
         return DEFAULT_SPORTS_CATEGORIES
     

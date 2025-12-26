@@ -23,9 +23,8 @@ try:
     from src.train import ModelTrainer
     from src.utils import load_config
 except ImportError:
-    # Try installed package name
-    from sports_type_classifier.train import ModelTrainer
-    from sports_type_classifier.utils import load_config
+    # Package not in path, may need to install
+    raise ImportError("Cannot import required modules. Install package with: pip install -e .")
 
 
 def main():

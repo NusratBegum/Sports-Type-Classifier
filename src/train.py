@@ -189,7 +189,7 @@ class ModelTrainer:
         self.logger.info(f"Input shape: {input_shape}")
         
         # Note: In actual implementation, build model using TensorFlow/Keras
-        # from src.model import create_sports_classifier
+        # from .model import create_sports_classifier
         # 
         # self.model = create_sports_classifier(
         #     num_classes=num_classes,

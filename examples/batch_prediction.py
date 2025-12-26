@@ -22,8 +22,8 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 try:
     from src.predict import SportsPredictor
 except ImportError:
-    # Try installed package name
-    from sports_type_classifier.predict import SportsPredictor
+    # Package not in path, may need to install
+    raise ImportError("Cannot import SportsPredictor. Install package with: pip install -e .")
 
 
 def main():

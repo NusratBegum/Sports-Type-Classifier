@@ -76,7 +76,7 @@ class ImagePreprocessor:
         self.target_size = target_size
         self.normalize = normalize
         
-        # Use ImageNet statistics as default for transfer learning
+        # Use ImageNet statistics as default for transfer learning with pre-trained models
         self.mean = mean if mean is not None else np.array([0.485, 0.456, 0.406])
         self.std = std if std is not None else np.array([0.229, 0.224, 0.225])
     

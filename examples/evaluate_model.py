@@ -22,8 +22,8 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 try:
     from src.evaluate import ModelEvaluator
 except ImportError:
-    # Try installed package name
-    from sports_type_classifier.evaluate import ModelEvaluator
+    # Package not in path, may need to install
+    raise ImportError("Cannot import ModelEvaluator. Install package with: pip install -e .")
 
 
 def main():

@@ -205,3 +205,24 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Project-specific files and directories
+# Model files
+models/*.h5
+models/*.pb
+models/*.tflite
+models/saved_model/
+
+# Data directories
+data/
+datasets/
+
+# Training outputs
+checkpoints/
+logs/
+results/
+outputs/
+
+# Temporary files
+tmp/
+temp/

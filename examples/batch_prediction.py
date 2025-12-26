@@ -13,8 +13,17 @@ Author: NusratBegum
 Date: 2025
 """
 
+import sys
 from pathlib import Path
-from src.predict import SportsPredictor
+
+# Add parent directory to path for development mode
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+try:
+    from src.predict import SportsPredictor
+except ImportError:
+    # Try installed package name
+    from sports_type_classifier.predict import SportsPredictor
 
 
 def main():

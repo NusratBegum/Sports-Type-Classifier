@@ -58,7 +58,8 @@ setup(
         "Documentation": "https://github.com/NusratBegum/Sports-Type-Classifier/blob/main/README.md",
         "Source Code": "https://github.com/NusratBegum/Sports-Type-Classifier",
     },
-    packages=find_packages(exclude=["tests", "tests.*", "notebooks", "docs"]),
+    packages=find_packages(exclude=["tests", "tests.*", "notebooks", "docs", "examples"]),
+    package_dir={"sports_type_classifier": "src"},
     classifiers=[
         "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
@@ -105,9 +106,9 @@ setup(
     },
     entry_points={
         "console_scripts": [
-            "sports-train=src.train:main",
-            "sports-evaluate=src.evaluate:main",
-            "sports-predict=src.predict:main",
+            "sports-train=sports_type_classifier.train:main",
+            "sports-evaluate=sports_type_classifier.evaluate:main",
+            "sports-predict=sports_type_classifier.predict:main",
         ],
     },
     include_package_data=True,

@@ -13,8 +13,17 @@ Author: NusratBegum
 Date: 2025
 """
 
+import sys
 from pathlib import Path
-from src.model import SportsClassifier
+
+# Add parent directory to path for development mode
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+try:
+    from src.model import SportsClassifier
+except ImportError:
+    # Try installed package name
+    from sports_type_classifier.model import SportsClassifier
 
 
 def main():

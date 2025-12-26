@@ -295,8 +295,10 @@ def plot_confusion_matrix(
     """
     plt.figure(figsize=figsize)
     
-    # Normalize confusion matrix
-    cm_normalized = confusion_matrix.astype('float') / confusion_matrix.sum(axis=1)[:, np.newaxis]
+    # Normalize confusion matrix with zero-division protection
+    row_sums = confusion_matrix.sum(axis=1)[:, np.newaxis]
+    row_sums[row_sums == 0] = 1  # Avoid division by zero
+    cm_normalized = confusion_matrix.astype('float') / row_sums
     
     # Create heatmap
     sns.heatmap(

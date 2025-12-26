@@ -19,7 +19,7 @@ from pathlib import Path
 from typing import Dict, List, Optional, Union, Any
 import numpy as np
 
-from src.utils import (
+from .utils import (
     setup_logging,
     load_config,
     list_image_files,
@@ -175,7 +175,9 @@ class SportsPredictor:
         # predictions = self.model.predict(image_batch, verbose=0)
         # probabilities = predictions[0]
         
-        # For demonstration, create placeholder predictions
+        # TODO: Replace with actual model prediction
+        # For demonstration purposes only - this is placeholder code
+        # In production, use: predictions = self.model.predict(image_batch, verbose=0)
         probabilities = np.random.random(len(self.class_names))
         probabilities = probabilities / probabilities.sum()
         

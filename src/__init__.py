@@ -22,8 +22,8 @@ __version__ = "1.0.0"
 __author__ = "NusratBegum"
 __license__ = "MIT"
 
-from src.model import SportsClassifier, create_sports_classifier
-from src.preprocessing import ImagePreprocessor, load_and_preprocess_image
+from .model import SportsClassifier, create_sports_classifier
+from .preprocessing import ImagePreprocessor, load_and_preprocess_image
 
 __all__ = [
     "SportsClassifier",

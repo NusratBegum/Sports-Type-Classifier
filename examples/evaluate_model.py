@@ -13,8 +13,17 @@ Author: NusratBegum
 Date: 2025
 """
 
+import sys
 from pathlib import Path
-from src.evaluate import ModelEvaluator
+
+# Add parent directory to path for development mode
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+try:
+    from src.evaluate import ModelEvaluator
+except ImportError:
+    # Try installed package name
+    from sports_type_classifier.evaluate import ModelEvaluator
 
 
 def main():

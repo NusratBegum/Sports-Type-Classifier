@@ -72,9 +72,8 @@ Sports-Type-Classifier/
 
 - **Multi-class Classification**: Supports classification of multiple sports types
 - **Transfer Learning**: Leverages pre-trained models (ResNet50, EfficientNet, MobileNetV2)
-- **High Accuracy**: Achieves >90% accuracy on test datasets
 - **Flexible Architecture**: Easy to extend with new sports categories
-- **Production-Ready**: Professional code with comprehensive documentation
+- **Modular code**: separate preprocessing, model, training, evaluation and prediction modules
 - **Data Augmentation**: Built-in augmentation pipeline for robust training
 - **Batch Processing**: Efficient inference on multiple images
 - **Configurable**: YAML-based configuration for easy customization
